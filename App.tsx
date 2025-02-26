@@ -36,6 +36,7 @@ function App(): React.JSX.Element {
           title="Open Flutter Module"
           onPress={() => {
             console.log('====================================');
+            console.log('Test changes');
             console.log(FlutterNativeModule);
             console.log('====================================');
             FlutterNativeModule.showToast('token', 'userID');
