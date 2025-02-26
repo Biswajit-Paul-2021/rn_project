@@ -7,6 +7,10 @@ require Pod::Executable.execute_command('node', ['-p',
 
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
+flutter_application_path = '../rn_flutter_module'
+load File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')
+
+
 
 linkage = ENV['USE_FRAMEWORKS']
 if linkage != nil
@@ -19,9 +23,14 @@ target 'rn_project' do
 
   use_react_native!(
     :path => config[:reactNativePath],
+    :hermes_enabled => false,
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
+
   )
+    # use_frameworks!
+
+  install_all_flutter_pods(flutter_application_path)
 
   target 'rn_projectTests' do
     inherit! :complete
@@ -36,5 +45,6 @@ target 'rn_project' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+    flutter_post_install(installer) if defined?(flutter_post_install)
   end
 end

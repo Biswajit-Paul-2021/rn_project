@@ -105,11 +105,20 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+    compileOptions {
+        sourceCompatibility = 11 // The minimum value
+        targetCompatibility = 11 // The minimum value
+    }
 }
 
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+//    implementation(project(":flutter"))
+    debugImplementation 'com.example.rn_flutter_module.rn_flutter_module:flutter_debug:1.0'
+    // profileImplementation 'com.example.rn_flutter_module.rn_flutter_module:flutter_profile:1.0'
+    releaseImplementation 'com.example.rn_flutter_module.rn_flutter_module:flutter_release:1.0'
+
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")

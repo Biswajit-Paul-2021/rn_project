@@ -1,6 +1,7 @@
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
+#import <React/RCTBridge.h>
 
 @implementation AppDelegate
 
@@ -29,3 +30,5 @@
 }
 
 @end
+
+
